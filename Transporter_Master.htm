@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html" />
+	<meta name="author" content="lolkittens" />
+
+	<title>Transporter Master</title>
+    <link rel="stylesheet" type="text/css" href="css.css" />
+    <script type="text/javascript">
+      function validation()
+      {
+        var No=document.transporterMaster.ContactNo.value;
+        
+        if(No.length<10)
+        {
+            alert("Please enter at least 10 digits in mobile number");
+            document.transporterMaster.ContactNo.focus();
+            return false;
+        }
+        var uname=/^[a-zA-Z ]*$/;
+       
+        var unm=document.transporterMaster.DNAME.value.match(uname);
+        
+        if(unm==null)
+        {
+            alert("Please enter valid Driver name!");
+            document.transporterMaster.DNAME.focus();
+            return false;
+        }
+        
+        return ( true );
+      }
+    </script>
+</head>
+
+<body>
+<marquee><h1 class=impact style='color:white;' ><b><i>MUSICAL EVENT MANAGEMENT SYSTEM</i></b></h1></marquee>
+<center>
+  <form name="transporterMaster" action="Transporter_Master.php" method="POST" onsubmit="return validation();">
+    <table>
+      <h2>TRANSPORTER MASTER</h2>
+      
+      <tr>
+        <td>Transport ID : </td>
+        <td><input type="text" name="TRANSID" class="Input" placeholder="Transport ID " required=""/></td>
+      </tr>
+      
+      <tr>
+        <td>Vehicle Number : </td>
+        <td><input type="text" name="VNO" class="Input" placeholder="Vehicle No" required=""/></td>
+      </tr>
+      
+      <tr>
+        <td>Vehicle Type : </td>
+        <td><input type="text" name="VTYPE" class="Input" placeholder="Vehicle Type" required=""/></td>
+      </tr>
+      
+      <tr>
+        <td>Driver Name : </td>
+        <td><input type="text" name="DNAME" class="Input" placeholder="Driver Name" required=""/></td>
+      </tr>
+      
+      <tr>
+        <td>Contact Number : </td>
+        <td><input type="text" name="ContactNo" class="Input" placeholder="Contact No" required=""/></td>
+      </tr>
+      
+      <tr>
+        <td>Email Id : </td>
+        <td><input type="email" name="MailId" class="Input" placeholder="Email ID" required=""/></td>
+      </tr>
+      
+      <tr>
+        <td>Charges : </td>
+        <td><input type="text" name="CHARGE" class="Input" placeholder="Charges" required=""/></td>
+      </tr>
+      
+      <tr>
+        <td colspan="2" align="center">
+          <input type="submit" name="submit" class="submit" value="Submit"/>
+          <a href="index2.html" ><input type="button" name="Home" class="button" value="Home" /></a>
+        </td> 
+      </tr>
+    </table>
+  </form>
+</center>
+
+
+</body>
+</html>

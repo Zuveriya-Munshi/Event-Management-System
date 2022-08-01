@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html" />
+	<meta name="author" content="lolkittens" />
+
+	<title>Feedback</title>
+    <link rel="stylesheet" type="text/css" href="css.css" />
+</head>
+
+<body>
+<marquee><h1 class=impact style='color:white;' ><b><i>MUSICAL EVENT MANAGEMENT SYSTEM</i></b></h1></marquee>
+  <form action="Feedback.php" name="FeedBack" method="POST">
+    <center>
+      <table>
+        <h2>FEEDBACK</h2>
+        <p>Please provide your feedback below:</p>
+        <tr>
+          <td>User Name <span class="star">*</span></td>
+          <td><input type="text" name="Uname" placeholder="Enter User Name " class="Input" required="" /></td>
+        </tr>
+        <tr>
+          <td>Ratings : </td>
+          <td><input type="radio" name="Star" value="1star"  />1 star
+          <input type="radio" name="Star"  value="2star" />2 star
+          <input type="radio" name="Star" value="3star" />3 star
+          <input type="radio" name="Star" value="4star"  />4 star
+          <input type="radio" name="Star" value="5star" />5 star</td>
+        </tr>
+        <tr>
+          <td>Comments : </td>
+          <td><textarea cols="30" rows="3" name="comment" placeholder="Comments..." required=""></textarea></td>
+        </tr>
+        <tr>
+          <td align="center" colspan="2"><input type="submit" name="Submit" class="submit" value="Submit" onclick="history.back();"/></td>
+        </tr>
+      </table>
+    </center>
+  </form>
+
+
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Faraskhana</title>
+    <link rel="stylesheet" type="text/css" href="css.css" />
+    <script type="text/javascript">
+      function validation()
+      {
+        var no=document.Faraskhana.Contactno.value;
+        if(no.length<10)
+        {
+            alert("Please enter at least 10 digits in mobile number");
+            document.Faraskhana.Contactno.focus();
+            return false;
+        }
+        var uname=/^[a-zA-Z ]*$/;
+       
+        var unm=document.Faraskhana.Stagenm.value.match(uname);
+        
+        if(unm==null)
+        {
+            alert("Please enter valid name!");
+            document.Faraskhana.Stagenm.focus();
+            return false;
+        }
+        return true;
+      }
+    </script>
+</head>
+
+<body>
+<marquee><h1 class=impact style='color:white;' ><b><i>MUSICAL EVENT MANAGEMENT SYSTEM</i></b></h1></marquee>
+<center>
+<form action="Faraskhana.php" method="post" name="Faraskhana" onsubmit="return validation();">
+<table>
+<h2>FARASKHANA</h2>
+ <tr>
+ <td>Faraskhana Code</td>
+ <!--<td><input type="text" name="FaraskhanaCode" placeholder="Faraskhana Code" required=""/></td>-->
+ <td>
+   <select name="FaraskhanaCode">
+     <option class="option">F001</option>
+     <option class="option">F002</option>
+     <option class="option">F003</option>
+     <option class="option">F004</option>
+     <option class="option">F005</option>
+   </select>
+ </td>
+ </tr>
+ <tr>
+ <td>Description</td>
+ <td><input type="text" name="Des" placeholder="Description" required=""/></td>
+ </tr>
+ <tr>
+ <td>Vendor Code</td>
+ <td><input type="text" name="VenCode" placeholder="Vendor Code" required=""/></td>
+ </tr> 
+ <tr> 
+ <td>Name</td>
+ <td><input type="text" name="Stagenm" placeholder="Name" required="" /></td>
+ </tr>
+ <td>Mobile Number</td>
+ <td><input type="text" name="Contactno" placeholder="Mobile No " required=""/></td>
+ <tr>
+ <td>EmailId</td>
+ <td><input type="email" name="Gmail" placeholder="Email ID" required=""/></td>
+ </tr>
+ <tr>
+ <td>Price</td>
+ <td><input type="text" name="StaPrice" placeholder="Price" required="" /></td>
+ </tr>
+ <tr>
+ <td>Advanced Amount</td>
+ <td><input type="text" name="Advamount" placeholder="Advace Amount" required=""/></td>
+ </tr>
+ <tr align="center">
+ <td colspan="2" rowspan="2">
+ <input type="submit" name="Submit" class="submit" value="Submit"/>
+ <a href="index2.html" ><input type="button" name="Home" class="button" value="Home" /></a>
+ </td>
+ </tr>
+ </table>
+</form>
+</center>
+</body>
+</html>

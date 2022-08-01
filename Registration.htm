@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html" />
+	<meta name="author" content="lolkittens" />
+
+	<title>Registration</title>
+    <link rel="stylesheet" type="text/css" href="css.css" />
+    
+    <script type="text/javascript">
+      function validate()
+      {
+        var MobNo=document.reg.MOBNO.value;
+        var pwd=document.reg.UPASS.value;
+        var uname=/^[a-zA-Z ]*$/;
+       
+        var unm=document.reg.UNAME.value.match(uname);
+        var fnm=document.reg.FNAME.value.match(uname);
+        if(MobNo.length<10)
+        {
+            alert("Please Enter Mobile Number in at least 10 digits");
+            document.reg.MOBNO.focus();
+            return false;
+            
+        }
+        if(pwd.length<6)
+        {
+            alert("Length of password is atleast 6 characters!");
+            document.reg.UPASS.focus();
+            return false;
+        }
+        if(unm==null)
+        {
+            alert("Please enter valid user name!");
+            document.reg.UNAME.focus();
+            return false;
+        }
+        
+        if(fnm==null)
+        {
+            alert("Please enter valid full name!");
+            document.reg.FNAME.focus();
+            return false;
+        }
+        return (true);
+      }
+    </script>
+</head>
+
+<body>
+<marquee><h1 class=impact style='color:white;' ><b><i>MUSICAL EVENT MANAGEMENT SYSTEM</i></b></h1></marquee>
+
+<center >
+  <form name="reg" action="Registration.php" method="POST" onsubmit="return validate();">
+    <table>
+    
+     <h2>REGISTRATION</h2>
+      <tr>
+        <td>User Type : </td>
+        <td>
+          <select name="UTYPE">
+            <option class="option">User</option>
+            <option class="option">SINGER</option>
+            <option class="option">GITAR</option>
+            <option class="option">DRUMSET</option>
+            <option class="option">TABLA</option>
+            <option class="option">CASIOPLAYER</option>
+           
+          </select> 
+        </td>
+      </tr>
+      
+      <tr>
+        <td>User Category : </td>
+        <td>
+          <select name="UCAT">
+            <option class="option" >USER</option>
+            <option class="option" >ADMIN</option>
+          </select>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>User Name : </td>
+        <td><input type="text" name="UNAME" class="Input" placeholder="User Name" required=""/></td>
+      </tr>
+      
+      <tr>
+        <td>Password : </td>
+        <td><input type="password" name="UPASS" class="Input" placeholder="Enter your password" required=""/></td>
+      </tr>
+      
+      <tr>
+        <td>Email ID : </td>
+        <td><input type="email" name="EMAIL" class="Input" placeholder="Enter your EmailID" required=""/></td>
+      </tr>
+      
+      <tr>
+        <td>Full Name : </td>
+        <td><input type="text" name="FNAME" class="Input" placeholder="Enter your FullName" required=""/></td>
+      </tr>
+      
+      <tr>
+        <td>Address : </td>
+        <td><input type="text" name="ADDRESS" class="Input" placeholder="Enter your Address" required=""/></td>
+      </tr>
+      
+      <tr>
+        <td>Mobile Number : </td>
+        <td><input type="text" name="MOBNO" class="Input" placeholder="Enter your MobileNo" required=""/></td>
+      </tr>
+      
+      <tr>
+        <td>Security Question : </td>
+        <td>
+          <select name="SECQUE">
+             <option class="option">What is Your last school?</option>
+             <option class="option">Who is favourite singer?</option>
+             <option class="option">What is your Date of Birth?</option>
+             <option class="option">What is Your Last 4 digit in your phone no.?</option>
+             <option class="option">What is Your favourite color?</option>
+          </select>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>Security Answer : </td> 
+        <td><input type="text" name="SECANS" class="Input" placeholder="Security Answer" required=""/></td>
+      </tr>
+      
+      <tr>
+        <td colspan="2" align="center"> 
+          <input type="submit" value="Submit" class="submit"  name="Submit" />
+          <input type="button" value="Home" class="button" name="Home" onclick="history.back();"/>
+        </td>
+      </tr>
+    </table>
+  </form>
+</center>
+
+</body>
+</html>

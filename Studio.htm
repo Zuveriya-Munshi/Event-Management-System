@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Studio </title>
+     <link rel="stylesheet" type="text/css" href="css.css" />
+    <script type="text/javascript">
+    
+      function validation()
+      {
+        var no=document.Studio.Mobileno.value;
+        if(no.length<10)
+        {
+            alert("Please enter at least 10 digits in mobile number");
+            document.Studio.Mobileno.focus();
+            return false;
+        }
+        var uname=/^[a-zA-Z ]*$/;
+       
+        var unm=document.Studio.StudioName.value.match(uname);
+        
+        if(unm==null)
+        {
+            alert("Please enter valid Studio name!");
+            document.Studio.StudioName.focus();
+            return false;
+        }
+        return true;
+      }
+    </script>
+</head>
+
+<body>
+<marquee><h1 class=impact style='color:white;' ><b><i>MUSICAL EVENT MANAGEMENT SYSTEM</i></b></h1></marquee>
+<center>
+<form action="Studio.php" method="post" name="Studio" onsubmit="return validation();">
+<table>
+<h2>STUDIO </h2>
+
+ <tr>
+  <td>Studio Code</td>
+  <td><input type="text" name="StudioCode" placeholder="Studio Code" required="" /></td>
+ </tr>
+ <tr>
+ <td>Studio Name</td>
+ <td><input type="text" name="StudioName" placeholder="Studio Name" required=""/></td>
+ </tr>
+ <tr>
+ <td>Studio Address</td>
+ <td><input type="text" name="StudioAddress" placeholder="Studio Address" required=""/></td>
+ </tr>
+ <tr>
+ <td>Owner Name</td>
+ <td><input type="text" name="OwnerName" placeholder="OwnerName" required=""/></td>
+ </tr> 
+ <tr> 
+ <td>Owner Address</td>
+ <td><input type="text" name="OwnerAddress" placeholder="Owner Address" required="" /></td>
+ </tr>
+ <td>Mobile Number</td>
+ <td><input type="text" name="Mobileno" placeholder="Mobile Number" required=""/></td>
+ <tr>
+ <td>Email Id</td>
+ <td><input type="email" name="EmailId" placeholder="Email ID" required=""/></td>
+ </tr>
+ <tr>
+ <td>Price</td>
+ <td><input type="text" name="BookingPrice" placeholder="Booking Price" required="" /></td>
+ </tr>
+ <tr>
+ <td>Advanced Amount</td>
+ <td><input type="text" name="Advamount" placeholder="Minimum Advace Amount" required=""/></td>
+ </tr>
+ <tr align="center">
+ <td colspan="2" rowspan="2">
+ <input type="submit" name="Submit" class="submit" value="Submit"/>
+ <a href="index2.html" ><input type="button" name="Home"  class="button" value="Home"/></a>
+ </td>
+ </tr>
+ </table>
+</form>
+</center>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html" />
+	<meta name="author" content="lolkittens" />
+
+	<title>Staff Master</title>
+    <link rel="stylesheet" type="text/css" href="css.css" />
+    <script type="text/javascript">
+      function validate()
+      {
+        var ClientPhone = document.StaffMAster.ConNum.value;
+        if(ClientPhone.length < 10)
+        {
+            alert("Please enter at least 10 digits in mobile number");
+            document.StaffMAster.ConNum.focus();
+            return false;
+        }
+        var uname=/^[a-zA-Z ]*$/;
+       
+        var unm=document.StaffMAster.STAFFNM.value.match(uname);
+        
+        if(unm==null)
+        {
+            alert("Please enter valid Staff name!");
+            document.StaffMAster.STAFFNM.focus();
+            return false;
+        }
+        return true;
+      }
+    </script>
+</head>
+
+<body>
+<marquee><h1 class=impact style='color:white;' ><b><i>MUSICAL EVENT MANAGEMENT SYSTEM</i></b></h1></marquee>
+<center>
+  <form action="Staff_Master.php" name="StaffMAster" method="POST" onsubmit="return validate();">
+    <table >
+      <h2>STAFF MASTER</h2>
+      
+      <tr>
+        <td>Staff ID : </td>
+        <td><input type="text" name="STAFFID" class="Input" placeholder="Staff ID" required=""/></td>
+      </tr>
+      
+      <tr>
+        <td>Name : </td>
+        <td><input type="text" name="STAFFNM" class="Input" placeholder="Staff Name" required=""/></td>  
+      </tr>
+      
+      <tr>
+        <td>Gender</td>
+        <td>
+          <input type="radio" value="MALE" name="Gender" /> MALE
+          <input type="radio" value="FEMALE" name="Gender" /> FEMALE
+        </td>
+      </tr>
+      
+      <tr>
+        <td>Skill : </td>
+        <td>
+          <select name="SKILL">
+           <option class="option">SINGER</option>
+           <option class="option">GITAR</option>
+           <option class="option">DRUMSET</option>
+           <option class="option">TABLE</option>
+           <option class="option">CASIOPLAYER</option>
+           <option class="option">CORES</option>
+          </select>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>Address : </td>
+        <td><input type="text" name="Addr" class="Input" placeholder="Address" required=""/></td>
+      </tr>
+      
+      <tr>
+        <td>Staff Type : </td>
+        <td>
+          <input type="radio" name="STYPE" value="PERMANENT" />PERMANENT
+          <input type="radio" name="STYPE" value="CONTRACT" /> CONTRACT
+        </td>
+      </tr>
+      
+      <tr>
+        <td>Contact Number : </td>
+        <td><input type="text" name="ConNum" class="Input" placeholder="Contact Number" required="" /></td>
+      </tr>
+      
+      <tr>
+        <td>Email Id : </td>
+        <td><input type="email" name="MAILID" class="Input" placeholder="Email ID" required=""/></td>
+      </tr>
+      
+      <tr>
+        <td align="center" colspan="2">
+          <input type="submit" name="submit" class="submit" value="Submit" />
+          <a href="index2.html" ><input type="button" name="home" class="button" value="Home" /></td></a>
+      </tr>
+    </table>
+  </form>
+
+</center>
+
+</body>
+</html>

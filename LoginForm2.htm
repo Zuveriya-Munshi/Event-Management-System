@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html" />
+	<meta name="author" content="lolkittens" />
+
+	<title>Login Form</title>
+    <link rel="stylesheet" type="text/css" href="css.css" />
+     <script type="text/javascript">
+      function validate()
+      {
+        
+        var uname=/^[a-zA-Z ]*$/;
+       
+        var unm=document.LoginForm.Uname.value.match(uname);
+        var pwd=document.LoginForm.Pwd.value;
+        
+        if(unm==null)
+        {
+            alert("Please enter valid Admin name!");
+            document.LoginForm.Uname.focus();
+            return false;
+        }
+        if(pwd.length<6)
+        {
+            alert("Length of password is atleast 6 characters!");
+            document.LoginForm.Pwd.focus();
+            return false;
+        }
+        
+        return (true);
+      }
+    </script>
+</head>
+
+<body>
+<marquee><h1 class=impact style='color:white;' ><b><i>MUSICAL EVENT MANAGEMENT SYSTEM</i></b></h1></marquee>
+  <center>
+    <form name="LoginForm" action="LoginForm2.php" method="POST" onsubmit="return validate();">
+    <h2>ADMIN LOGIN FORM</h2>
+      <table>
+       
+        <tr>
+          <td>User Name : </td>
+          <td><input type="text" name="Uname" class="Input" placeholder="User Name" required="" /></td>
+        </tr>
+        <tr> 
+          <td>Password : </td>
+          <td><input type="password" name="Pwd" class="Input" placeholder="Password" required="" /></td>
+        </tr>
+        <tr>
+          <td align="center" colspan="2">
+            <input type="submit" name="submit" class="submit" value="Submit" />
+            <a href="index.html" ><input type="button" name="home" class="button" value="Home" /></a>
+          </td>
+        </tr>
+        <td colspan="3">
+          <p>Forget <a href="ForgetPassword.htm">Password </a></p>
+          <p>Change<a href="ChangePass.htm" >Password</a></p>
+          <p>New  <a href="Registration.htm">Sign Up</a></p>
+        </td>
+        
+      </table>
+    </form>
+  </center>
+
+
+
+</body>
+</html> 

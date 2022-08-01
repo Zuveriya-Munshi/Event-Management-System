@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html" />
+	<meta name="author" content="lolkittens" />
+    <link rel="stylesheet" type="text/css" href="css.css" />
+    <script type="text/javascript">
+      function validate()
+      {
+        
+        var uname=/^[a-zA-Z ]*$/;
+       
+        var unm=document.EventMaster.PNAME.value.match(uname);
+        
+        if(unm==null)
+        {
+            alert("Please enter valid Performer name!");
+            document.EventMaster.PNAME.focus();
+            return false;
+        }
+        
+        
+        return (true);
+      }
+    </script>
+
+
+	<title>Event Master</title>
+</head>
+
+<body>
+
+<center>
+<marquee><h1 class="impact" style="color:white;"><b><i>MUSICAL EVENT MANAGEMENT SYSTEM</i></b></h1></marquee>
+  <form name="EventMaster" method="POST" action="Event_Master.php" onsubmit="return validate();">
+    <table >
+    
+    <h2>EVENT MASTER</h2>
+    
+    <tr>
+      <td>Event ID : </td>
+      <td><input type="text" name="EID" placeholder="Event ID" required=""/> </td>
+    </tr>
+    
+    <tr>
+      <td>Event Name : </td>
+      <td>
+      <select name="ENAME">
+        <option class="option" >Select</option>
+        <option class="option" >Sangeet Sandhya</option>
+        <option class="option" >Birthday</option>
+        <option class="option" >Garba</option>
+        <option class="option" >Bhajans</option>
+        <option class="option" >Wedding Anniversary</option>
+       </select>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>Event Type : </td>
+      <td><input type="radio" name="ETYPE" value="Local"/>Local
+      <input type="radio" name="ETYPE" value="Outstation"/>Outstation</td>
+    </tr>
+    
+    <tr>
+      <td>Performer Name : </td>
+      <td><input type="text" name="PNAME" placeholder="Performer Name" required=""/></td>
+    </tr>
+    
+    
+    <tr>
+      <td>Instruments : </td>
+      <td><input type="radio" name="INSTRUMENT" value="YES" />YES
+      <input type="radio" name="INSTRUMENT" value="NO" />NO</td>
+    </tr>
+    
+    <tr>
+      <td>Faraskhana : </td>
+      <td><input type="radio" name="FARASKHANA" value="YES" />YES
+      <input type="radio" name="FARASKHANA" value="NO" />NO</td>
+    </tr>
+    
+    <tr>
+      <td>Sound System : </td>
+      <td><input type="radio" name="SOUND" value="YES" />YES
+      <input type="radio" name="SOUND" value="NO" />NO</td>
+    </tr>
+    
+    <tr> 
+      <td>Lighting :</td>
+      <td><input type="radio" name="LIGHT" value="YES" />YES
+      <input type="radio" name="LIGHT" value="NO" />NO</td>
+    </tr>
+    
+    
+    <tr>
+      <td>Number of Staff : </td>
+      <td><input type="text" name="NOSTAFF" placeholder="No Of Staff" required=""/></td>
+    </tr>
+    
+    <tr>
+      <td>Event Charges : </td>
+      <td><input type="text" name="ECHARGE" placeholder="Event Charges" required=""/></td>
+    </tr>
+    
+    <tr>
+      <td>Advance Amount : </td>
+      <td><input type="text" name="AMOUT" placeholder="Advance Amount" required=""/></td>
+    </tr>
+    
+    <tr>
+      <td align="center" colspan="2">
+        <input type="submit" value="Submit" class="submit" name="SUBMIT"/>
+        <a href="index2.html" ><input type="button" value="Home" class="button" name="home"/></a>
+      </td>
+    </tr>
+      
+  </table>
+  </form>
+ </center>
+
+</body>
+</html>

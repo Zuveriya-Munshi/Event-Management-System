@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html" />
+	<meta name="author" content="lolkittens" />
+
+	<title>Studio Booking</title>
+     <link rel="stylesheet" type="text/css" href="css.css"/>
+    <script type="text/javascript">
+    function validate()
+      {
+        var MobNo=document.studio_book.client_mobile.value;
+        
+        var uname=/^[a-zA-Z ]*$/;
+       
+        var unm=document.studio_book.client_name.value.match(uname);
+        
+        if(MobNo.length<10)
+        {
+            alert("Please Enter Mobile Number in at least 10 digits");
+            document.studio_book.client_mobile.focus();
+            return false;
+            
+        }
+       
+        if(unm==null)
+        {
+            alert("Please enter valid client name!");
+            document.studio_book.client_name.focus();
+            return false;
+        }
+        
+       
+        return (true);
+      } 
+    </script>
+</head>
+
+<body>
+ <center>
+
+
+<marquee><h1 class=impact style='color:white;' ><b><i>MUSICAL EVENT MANAGEMENT SYSTEM</i></b></h1></marquee>
+ <form method="post" action="Studio_booking.php" name="studio_book" onsubmit="return validate();">
+  <h2>STUDIO BOOKING</h2>
+  <table >
+   <tr>
+    <td>Studio Code</td>
+    <td><input type="text" name="SerialNo" required=""/></td>
+   </tr>
+    <tr>
+      <td>Date</td>
+      <td><input type="date" name="studiodate" required=""/></td>
+    </tr>
+    <tr>
+      <td>Recording type</td>
+      <td><select name="rec_type">
+       <option>Album</option>
+       <option>CD</option>
+      </select></td>
+    </tr>
+    <tr>
+      <td>Client Name</td>
+      <td><input type="text" name="client_name" required=""/></td>
+    </tr>
+    <tr>
+      <td>Client Address</td>
+      <td><input type="text" name="client_address" required="" /></td>
+    </tr>
+    <tr>
+      <td>Client Mobile</td>
+      <td><input type="text" name="client_mobile" required=""/></td>
+    </tr>
+    <tr>
+      <td>Client Email</td>
+      <td><input type="email" name="client_email" required=""/></td>
+    </tr>
+    <tr>
+      <td>Start Time</td>
+      <td><input type="time" name="bdate_from" required=""/></td>
+    </tr>
+    <tr>
+      <td>End Time</td>
+      <td><input type="time" name="bdate_to" required=""/></td>
+    </tr>
+   
+    <tr>
+      <td>Payment Mode</td>
+      <td>
+      <input type="radio" name="Payment_mode" value="Online"/>Online
+      <input type="radio" name="Payment_mode" value="Offline" />Offline
+      </td>
+    </tr>
+     <tr>
+     <td colspan="2" align="center">
+      <input type="submit" name="submit" class="submit" value="Submit"/>
+      <input type="button" name="Home"  class="button" value="Home" onclick="history.back();"/>
+      </td>
+     </tr>
+           
+    
+  </table>
+ </form>
+ </center>
+ 
+  
+
+
+</body>
+</html>
