@@ -1,11 +1,11 @@
 <?php
   if(isset($_POST['Submit']))
   {
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
     echo '</a> <link rel="stylesheet" type="text/css" href="css.css"> ';
     if($con)
     {
-        mysql_select_db("project",$con);
+        mysqli_select_db($con,"project");
         
         $sEventid=$_POST['eid'];
         $sEventnm=$_POST['enm'];
@@ -20,7 +20,7 @@
         $sAdvanceAmount=$_POST['amount'];
         
         $update="Update eventmaster Set Eventname='$sEventnm',Eventtype='$sEventtype',Performername='$sPerformernm',Instrunment='$sInstrument',Faraskhana='$sFaraskhana',Soundsys='$sSoundsys',Lighting='$sLighting',Noofstaff=$sNoofStaff,Eventcharges=$sEventcharge,Advanceamount=$sAdvanceAmount where Eventid like '%$sEventid%'";
-      if(mysql_query($update,$con))
+      if(mysqli_query($con,$update))
       {
         echo  "<script type='text/javascript'>
     alert('Record Updated Successfully')
@@ -29,7 +29,7 @@
       }
     
     }
-    mysql_close($con);
+    mysqli_close($con);
   }
 
 

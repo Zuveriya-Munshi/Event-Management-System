@@ -1,11 +1,11 @@
 <?php
   if(isset($_POST['Submit']))
   {
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
     echo '</a> <link rel="stylesheet" type="text/css" href="css.css"> ';
     if($con)
     {
-        mysql_select_db("project",$con);
+        mysqli_select_db($con,"project");
         $sBookID=$_POST['BookID'];
         $sBookDate=$_POST['BookDate'];
         $sEventid=$_POST['EventID'];
@@ -33,7 +33,7 @@
         
         
       $update="Update booking Set Bookingdate='$sBookDate',EventID=$sEventid,Eventname='$sEventnm',Eventdate='$sEventDate',Performername='$sPerformernm',Clientname='$sclientNM',Clientaddress='$sclientAdd',Clientphone=$sclientPhn,Clientmail='$sclinetEmail',Faraskhana='$sFaraskhana',FaraskhanaCode='$sfaraskhanaCode',Soundsys='$sSoundsys',Lighting='$sLighting',Venue='$svenue',Starttime='$sstartTime',Endtime='$sendTime',Permissionstatus='$spolicePermission',Instrumentstatus='$sInsStatus',Advanceamount=$sadvAmt where Bookingid like '%$sBookID%'";
-      if(mysql_query($update,$con))
+      if(mysqli_query($con,$update))
       {
         echo  "<script type='text/javascript'>
         alert('Record Updated Successfully')
@@ -43,6 +43,6 @@
       }
     
     }
-    mysql_close($con);
+    mysqli_close($con);
   }
 ?>

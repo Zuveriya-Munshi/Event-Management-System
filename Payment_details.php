@@ -1,19 +1,19 @@
 <?php
 if(isset($_POST['submit']))
 {
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
     if($con)
     {
         echo "<br>Connection Successfull<br>";
     
-    mysql_select_db("project");
+    mysqli_select_db($con,"project");
     $bookID=$_POST['BID'];
     echo "Booking Id : ".$bookID;
     
     
     $sql="Select Bookingdate,Faraskhana,Soundsys,Lighting,Instrumentstatus from booking where Bookingid=$bookID";
-    $query1=mysql_query($sql,$con);
-    while($rs=mysql_fetch_assoc($query1))
+    $query1=mysqli_query($con,$sql);
+    while($rs=mysqli_fetch_assoc($query1))
     {
         $BookDate=$rs['Bookingdate'];
         $Faraskhana=$rs['Faraskhana'];
@@ -76,12 +76,12 @@ if(isset($_POST['submit']))
 <?php
 if(isset($_POST['submit']))
 {
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
     if($con)
     {
         echo "<br>Connection Successfull<br>";
     
-    mysql_select_db("project");
+    mysqli_select_db($con,"project");
     if($Faraskhana=="No")
     {
         $FFaraskhanaCode="";
@@ -91,9 +91,9 @@ if(isset($_POST['submit']))
     
     else{
         $sql1="Select FaraskhanaCode,Price,Advanceamount from faraskhanarent where BookingID=$bookID";
-    $query2=mysql_query($sql1,$con);
+    $query2=mysqli_query($con,$sql1);
     
-    while($rs1=mysql_fetch_assoc($query2))
+    while($rs1=mysqli_fetch_assoc($query2))
     {
          $FFaraskhanaCode=$rs1['FaraskhanaCode'];
          $FPrice=$rs1['Price'];
@@ -110,12 +110,12 @@ if(isset($_POST['submit']))
 if(isset($_POST['submit']))
 {
   
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
     if($con)
     {
         echo "<br>Connection Successfull<br>";
     
-    mysql_select_db("project");
+    mysqli_select_db($con,"project");
     if($Soundsys=="No")
     {
         $SsoundsysCode="";
@@ -125,9 +125,9 @@ if(isset($_POST['submit']))
     else{
     
         $sql8="Select soundsysCode,Price,Advanceamount from soundsyrent where BookingID=$bookID";
-    $query6=mysql_query($sql8,$con);
+    $query6=mysqli_query($con,$sql8);
     
-    while($rs6=mysql_fetch_assoc($query6))
+    while($rs6=mysqli_fetch_assoc($query6))
     {
          $SsoundsysCode=$rs6['soundsysCode'];
          $SPrice=$rs6['Price'];
@@ -143,12 +143,12 @@ if(isset($_POST['submit']))
 <?php
 if(isset($_POST['submit']))
 {
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
     if($con)
     {
         echo "<br>Connection Successfull<br>";
     
-    mysql_select_db("project");
+    mysqli_select_db($con,"project");
    if($Lighting=="No")
    {
       $LPatterncode="";
@@ -157,9 +157,9 @@ if(isset($_POST['submit']))
    }
    else{
     $sql3="Select PatternCode,Price,Advanceamount from lightingrent where BookingID=$bookID";
-    $query3=mysql_query($sql3,$con);
+    $query3=mysqli_query($con,$sql3);
     
-    while($rs3=mysql_fetch_assoc($query3))
+    while($rs3=mysqli_fetch_assoc($query3))
     {
          $LPatterncode=$rs3['PatternCode'];
          $LPrice=$rs3['Price'];
@@ -177,12 +177,12 @@ if(isset($_POST['submit']))
 <?php
 if(isset($_POST['submit']))
 {
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
     if($con)
     {
         echo "<br>Connection Successfull<br>";
     
-    mysql_select_db("project");
+    mysqli_select_db($con,"project");
     if($Instrumentstatus=="No")
     {
         $IInstrumentID="";
@@ -191,9 +191,9 @@ if(isset($_POST['submit']))
     }
     else{
             $sql6="Select InstrumentID,Charges,Advanceamount from instrumentrent where BookingID=$bookID";
-    $query5=mysql_query($sql6,$con);
+    $query5=mysqli_query($con,$sql6);
     
-    while($rs5=mysql_fetch_assoc($query5))
+    while($rs5=mysqli_fetch_assoc($query5))
     {
          $IInstrumentID=$rs5['InstrumentID'];
          $IPrice=$rs5['Charges'];
@@ -210,14 +210,14 @@ if(isset($_POST['submit']))
   
   if(isset($_POST['submit']))
 {
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
      $bookID=$_POST['BID'];
-     mysql_select_db("project");
+     mysqli_select_db($con,"project");
      $sql10="Select Bookingid from payment_details where Bookingid=$bookID";
      echo "ID : ".$bookID;
-     $query10=mysql_query($sql10,$con);
+     $query10=mysqli_query($con,$sql10);
     
-    while($rs=mysql_fetch_assoc($query10))
+    while($rs=mysqli_fetch_assoc($query10))
     {
         $PBookID=$rs['Bookingid'];
         echo "<br/>Booking ID : ".$PBookID;
@@ -266,7 +266,7 @@ if(isset($_POST['submit']))
         {
     
           $que="insert into payment_details values(PaymentID,$bookID,'$IInstrumentID',$IPrice,$IAdvanceamount,'$Iamtdate',$Ifinpay,'$Ifindate','$FFaraskhanaCode',$FPrice,$FAdvanceamount,'$Famtdate',$Ffinpay,'$Ffindate','$LPatterncode',$LPrice,$LAdvanceamount,'$Lamtdate',$Lfinpay,'$Lfindate','$SsoundsysCode',$SPrice,$SAdvanceamount,'$Samtdate',$Sfinpay,'$Sfindate')";
-          if(mysql_query($que,$con))
+          if(mysqli_query($con,$que))
           {
             echo "<script>
             alert('Payment Succesfull!')
@@ -277,7 +277,7 @@ if(isset($_POST['submit']))
           }
      
      }
-     mysql_close($con);
+     mysqli_close($con);
 }
 
 ?>

@@ -1,7 +1,7 @@
 <?php
    if(isset($_POST['Submit']))
    {
-     $con=mysql_connect("localhost","root","");
+     $con=mysqli_connect("localhost","root","");
      if($con)
      {
         echo "Connection is Successful!";
@@ -11,7 +11,7 @@
         echo "Connection is fail!";
      }
      
-     mysql_select_db("project");
+     mysqli_select_db($con,"project");
      $eUTYPE=$_POST['UTYPE'];
      $eUCAT=$_POST['UCAT'];
      $eUNAME=$_POST['UNAME'];
@@ -26,7 +26,7 @@
      
        $ins="Insert into registration values ('$eUTYPE','$eUCAT','$eUNAME','$eUPASS','$eEMAIL','$eFNAME','$eADDRESS',$eMOBNO,'$eSECQUE','$eSECANS')";
      
-     if(mysql_query($ins,$con))
+     if(mysqli_query($con,$ins))
      {
      echo  "<script type='text/javascript'>
     alert('Registred Successfully!')
@@ -43,7 +43,7 @@
 
         
      }
-     mysql_close($con);
+     mysqli_close($con);
    }
 
 ?>

@@ -2,11 +2,11 @@
 
  if(isset($_POST['Submit']))
  {
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
     if($con)
     echo "Connection Success"."</br>";
     {
-        mysql_select_db("project");
+        mysqli_select_db($con,"project");
         $ssysCode=$_POST['dsysCode'];
         $sdescription=$_POST['ddescription'];
         $svendorCode=$_POST['dvendorCode'];
@@ -17,7 +17,7 @@
         $sadvAmt=$_POST['dadvAmt'];
         
         $update="Update soundsystem Set Description='$sdescription',Vendor_Code='$svendorCode',Name='$sName',Mobile=$smobNo,Email='$semail',Price=$sprice,AdvAmt=$sadvAmt where Sys_Code ='$ssysCode'";
-      if(mysql_query($update,$con))
+      if(mysqli_query($con,$update))
       {
         echo  "<script type='text/javascript'>
     alert('Record Updated Successfully!')
@@ -37,7 +37,7 @@
       }
     }
     
-    mysql_close($con);
+    mysqli_close($con);
   }
  
 ?>

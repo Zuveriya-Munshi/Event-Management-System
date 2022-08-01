@@ -1,11 +1,11 @@
 <?php
  if(isset($_POST['submit']))
   {
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
     if($con)
     {
         echo "Connection Successful...!!!";
-        mysql_select_db("project",$con);
+        mysqli_select_db($con,"project");
         
         $stransportid=$_POST['dTRANSID'];
         echo $stransportid;
@@ -18,7 +18,7 @@
         
          echo $scontactno,$scharges;    
         $update="Update transportermaster Set Vehicleno='$svehicleno',Vehicletype='$svehicletype',Drivername='$sdrivernm',Contactno=$scontactno,Email='$semail',Charges=$scharges where Transporterid like '%$stransportid%'";
-      if(mysql_query($update,$con))
+      if(mysqli_query($con,$update))
       {
          echo  "<script type='text/javascript'>
     alert('Record Updated Successfully!')
@@ -29,7 +29,7 @@
       
     
     }
-    mysql_close($con);
+    mysqli_close($con);
   }
  
 

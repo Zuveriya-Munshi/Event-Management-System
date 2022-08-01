@@ -1,15 +1,15 @@
 <?php
-$con=mysql_connect("localhost","root","");
+$con=mysqli_connect("localhost","root","");
 if($con)
 {
-    mysql_select_db("project",$con);
-    $result=mysql_query("SELECT * FROM lighting ");
+    mysqli_select_db($con,"project");
+    $result=mysqli_query($con,"SELECT * FROM lighting ");
     echo '<link rel="stylesheet" type="text/css" href="css.css" />';
     echo "<center>";
     
 echo "<marquee><h1 class=impact style='color:white;' ><b><i>MUSICAL EVENT MANAGEMENT SYSTEM</i></b></h1></marquee>";
    echo "<h3 style='color:white;'>Click to Edit Lighting Details</h3>";
-    if(mysql_num_rows($result)>0)
+    if(mysqli_num_rows($result)>0)
     {
         echo "<table >
         <td align='left' colspan='2'>
@@ -25,7 +25,7 @@ echo "<marquee><h1 class=impact style='color:white;' ><b><i>MUSICAL EVENT MANAGE
         <th>Price</th>
         <th>Advanceamount</th>
         </tr>";
-        while($row=mysql_fetch_array($result))
+        while($row=mysqli_fetch_array($result))
         {
             echo "<tr>";
             echo "<td><a href=\"LightingEditDetails.php?id={$row['Patterncode']}\">".$row['Patterncode']."</a></td>";
@@ -43,7 +43,7 @@ echo "<marquee><h1 class=impact style='color:white;' ><b><i>MUSICAL EVENT MANAGE
         echo "</center>";
     }
 }
-mysql_close($con);
+mysqli_close($con);
 
 
 ?>

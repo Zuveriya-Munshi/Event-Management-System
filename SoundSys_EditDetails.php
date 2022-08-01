@@ -1,12 +1,12 @@
 <?php
 
- $con=mysql_connect("localhost","root","");
+ $con=mysqli_connect("localhost","root","");
  if($con)
  {
-    mysql_select_db("project",$con);
+    mysqli_select_db($con,"project");
     $syscode=$_REQUEST['id'];
-    $result=mysql_query("SELECT * FROM soundsystem WHERE Sys_Code LIKE '%$syscode%'");
-    $row=mysql_fetch_array($result);
+    $result=mysqli_query($con,"SELECT * FROM soundsystem WHERE Sys_Code LIKE '%$syscode%'");
+    $row=mysqli_fetch_array($result);
     echo '<link rel="stylesheet" type="text/css" href="css.css" />';
     echo "<center>";
     echo "<marquee><h1 class=impact style='color:white;' ><b><i>MUSICAL EVENT MANAGEMENT SYSTEM</i></b></h1></marquee>";
@@ -31,6 +31,6 @@
     echo "</center>";
     
   }
- mysql_close($con);
+ mysqli_close($con);
  
 ?>

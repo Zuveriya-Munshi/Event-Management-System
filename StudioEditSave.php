@@ -1,10 +1,10 @@
 <?php
 if(isset($_POST['save']))
 {
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
     if($con)
     {
-        mysql_select_db("project",$con);
+        mysqli_select_db($con,"project");
         
         $dStudioCode=$_POST['eStudioCode'];
         $dStudioName=$_POST['eStudioName'];
@@ -17,7 +17,7 @@ if(isset($_POST['save']))
         $dAdvamount =$_POST['eAdvamount']; 
         //echo $dStudioCode,$dOwnerName,$dBookingPrice,$dAdvamount;
         $update="Update studio Set StudioName='$dStudioName',StudioAddress='$dStudioAddress',OwnerName='$dOwnerName',Address='$dOwnerAddress',Mobile_no=$dMobileno,EmailId='$dEmailId',BookingPrice=$dBookingPrice,Min_Advanceamount=$dAdvamount where StudioCode like '%$dStudioCode%'";
-        if(mysql_query($update,$con))
+        if(mysqli_query($con,$update))
         {
               echo  "<script type='text/javascript'>
     alert('Record Updated Successfully!')
@@ -27,7 +27,7 @@ if(isset($_POST['save']))
         }
         
     }
-    mysql_close($con);
+    mysqli_close($con);
 }
 
 

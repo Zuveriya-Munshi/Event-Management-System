@@ -1,18 +1,18 @@
 <?php
 if(isset($_POST['Submit']))
 {
-$con=mysql_connect("localhost","root","");
+$con=mysqli_connect("localhost","root","");
 if($con)
 {
     echo "Connected Successfully"."</br>";
 }
-mysql_select_db("project");
+mysqli_select_db($con,"project");
 $uname=$_POST['UserName'];
 $upass=$_POST['Oldpassword'];
 $newpass=$_POST['Newpassword'];
 //echo $uname,$upass;
-$sql=mysql_query("Select Password from registration where Username like '%$uname%'");
-$rs=mysql_fetch_array($sql);
+$sql=mysqli_query($con,"Select Password from registration where Username like '%$uname%'");
+$rs=mysqli_fetch_array($sql);
 $validate=$rs['Password'];
 $update="Update registration set Password='$newpass' where Username like '%$uname%'";
 if($validate!=$upass)
@@ -25,7 +25,7 @@ if($validate!=$upass)
    
 }
 else{
-if(mysql_query($update,$con))
+if(mysqli_query($con,$update))
 {
     echo  "<br><script type='text/javascript'>
     alert('Password Changed Successfully')
@@ -41,6 +41,6 @@ else
    
  }
  }
-mysql_close($con);
+mysqli_close($con);
 }
 ?>

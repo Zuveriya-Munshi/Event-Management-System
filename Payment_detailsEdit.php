@@ -1,12 +1,12 @@
 <?php
-$con=mysql_connect("localhost","root","");
+$con=mysqli_connect("localhost","root","");
 if($con){
-    mysql_select_db("project");
-    $result=mysql_query("Select * from payment_details");
+    mysqli_select_db($con,"project");
+    $result=mysqli_query($con,"Select * from payment_details");
     echo '</a> <link rel="stylesheet" type="text/css" href="css.css"> ';
     echo "<marquee><h1 class=impact style='color:white;' ><b><i>MUSICAL EVENT MANAGEMENT SYSTEM</i></b></h1></marquee>";
     echo "<h3 style='color:white;'>Click to Edit Payment Details</h3>";
-    if(mysql_num_rows($result)>0)
+    if(mysqli_num_rows($result)>0)
     {
         echo "<table >
         <td align='left' colspan='2'>
@@ -35,7 +35,7 @@ if($con){
          <th>Sou_Fin_Amt</th>
          <th>Sou_Fin_Date</th>
          </tr>";
-     while($row=mysql_fetch_array($result))
+     while($row=mysqli_fetch_array($result))
      {
         echo "<tr>";
         echo "<td><a href=\"Payment_detailsEditDetails.php?id={$row['Bookingid']}\">".$row['Bookingid']."</a></td>";
@@ -63,6 +63,6 @@ if($con){
      }
      echo "</table>";
     }
- mysql_close($con);
+ mysqli_close($con);
 }
 ?>

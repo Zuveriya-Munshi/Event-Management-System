@@ -1,13 +1,13 @@
 <?php
-$con=mysql_connect("localhost","root","");
+$con=mysqli_connect("localhost","root","");
 if($con){
- mysql_select_db("project",$con);
- $result=mysql_query("Select * from studio_booking");
+ mysqli_select_db($con,"project");
+ $result=mysqli_query($con,"Select * from studio_booking");
   echo '</a> <link rel="stylesheet" type="text/css" href="css.css"> ';
   echo "<center>";
   echo "<marquee><h1 class=impact style='color:white;' ><b><i>MUSICAL EVENT MANAGEMENT SYSTEM</i></b></h1></marquee>";
  echo "<h3 style='color:white;'>Click to Delete Studio Booking Details</h3>";
- if(mysql_num_rows($result)>0){
+ if(mysqli_num_rows($result)>0){
     
     echo "<table >
     
@@ -28,7 +28,7 @@ if($con){
       <td>AdvanceAmount</td>
       <td>PaymentMode</td>
      </tr>";
-     while($row=mysql_fetch_array($result)){
+     while($row=mysqli_fetch_array($result)){
         echo "<tr>";
         echo "<td><a href=\"Studio_bookingdeletedetails.php?id={$row['StudioCode']}\">".$row['StudioCode']."</td>";
         echo "<td>".$row['Date']."</td>";
@@ -50,5 +50,5 @@ if($con){
      echo "</center>";
   }
 }
-mysql_close($con);
+mysqli_close($con);
 ?>

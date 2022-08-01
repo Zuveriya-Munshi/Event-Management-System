@@ -1,18 +1,18 @@
 <?php
-$con=mysql_connect("localhost","root","");
+$con=mysqli_connect("localhost","root","");
 if($con){
        // echo "Connection Succesful";
 }
  else{
     echo "Connection failed";
  }
- mysql_select_db("project");
+ mysqli_select_db($con,"project");
   echo '</a> <link rel="stylesheet" type="text/css" href="css.css"> ';
- $result=mysql_query("select * from studio_booking");
+ $result=mysqli_query($con,"select * from studio_booking");
  echo "<center>";
  echo "<marquee><h1 class=impact style='color:white;' ><b><i>MUSICAL EVENT MANAGEMENT SYSTEM</i></b></h1></marquee>";
   echo "<h3 style='color:white;'>Click to Edit Studio Booking Details</h3>";
-   if(mysql_num_rows($result)>0)
+   if(mysqli_num_rows($result)>0)
    
    {
      
@@ -34,7 +34,7 @@ if($con){
       <td>AdvanceAmount</td>
       <td>PaymentMode</td>
       </tr>";
-      while($row=mysql_fetch_array($result)){
+      while($row=mysqli_fetch_array($result)){
         echo "<tr>";
         echo "<td><a href=\"Studio_bookingEditDetails.php?id={$row['StudioCode']}\">".$row['StudioCode']."</a></td>";
         
@@ -54,6 +54,6 @@ if($con){
       echo "</table>";
       echo "</center>";
    }
-mysql_close($con);
+mysqli_close($con);
 
 ?>

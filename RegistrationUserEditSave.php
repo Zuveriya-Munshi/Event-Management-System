@@ -21,14 +21,14 @@ if(isset($_POST['SAVE']))
         $RegSecQuestion=$_POST['SecQuestion'];
         $RegSecAnswer=$_POST['SecAnswer'];
         echo $RegUname;
-        $con=mysql_connect("localhost","root","");
+        $con=mysqli_connect("localhost","root","");
         if($con)
         {
             echo "Connection Succesfull";
         }
-        mysql_select_db("project");
+        mysqli_select_db($con,"project");
         $update="Update registration set Usertype='$RegUtype',Usercat='$RegUcat',Password='$RegPassword',Emailid='$RegEmailid',Fullname='$RegFullname',Addr='$RegAddr',Mobileno=$RegMobileno,SecQuetion='$RegSecQuestion',SecAnswer='$RegSecAnswer' where Username like '".$RegUname."'";
-        if(mysql_query($update,$con))
+        if(mysqli_query($con,$update))
         {
             echo  "<script type='text/javascript'>
     alert('Record updated Successfully!')
@@ -45,7 +45,7 @@ if(isset($_POST['SAVE']))
           
         }
 
-      mysql_close($con);
+      mysqli_close($con);
 }
 
 ?>

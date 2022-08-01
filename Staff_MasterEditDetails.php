@@ -1,12 +1,12 @@
 <?php
-$con=mysql_connect("localhost","root","");
+$con=mysqli_connect("localhost","root","");
 //echo $id;
   if($con)
   {
-    mysql_select_db("project",$con);
+    mysqli_select_db($con,"project");
      $ID=$_REQUEST['id'];
-    $result = mysql_query("select * from staffmaster where Id like '%$ID%'");
-    $row=mysql_fetch_array($result);
+    $result = mysqli_query($con,"select * from staffmaster where Id like '%$ID%'");
+    $row=mysqli_fetch_array($result);
     echo '</a> <link rel="stylesheet" type="text/css" href="css.css"> ';
     echo "<center>";
     echo "<marquee><h1 class=impact style='color:white;' ><b><i>MUSICAL EVENT MANAGEMENT SYSTEM</i></b></h1></marquee>";
@@ -30,7 +30,7 @@ $con=mysql_connect("localhost","root","");
      echo "</form>";
      echo "</center>";
   }
-  mysql_close($con);
+  mysqli_close($con);
 
 
 ?>

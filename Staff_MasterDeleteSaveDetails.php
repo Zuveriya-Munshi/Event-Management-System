@@ -2,10 +2,10 @@
 
 if(isset ($_POST['delete']))
 {
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
     if($con)
     {
-        mysql_select_db("project",$con);
+        mysqli_select_db($con,"project");
         
         $did=$_POST['eSTAFFID'];
         $dstaffname=$_POST['eSTAFFNM'];
@@ -16,7 +16,7 @@ if(isset ($_POST['delete']))
         $dstaffcontact=$_POST['eConNum'];
         $dstaffemail =$_POST['eMAILID'];
         $delete="Delete from staffmaster where Id like '%$did%'";
-        if(mysql_query($delete,$con))
+        if(mysqli_query($con,$delete))
         {
             echo  "<script type='text/javascript'>
     alert('Record Deleted Successfully!')
@@ -27,7 +27,7 @@ if(isset ($_POST['delete']))
         }
         
     }
-    mysql_close($con);
+    mysqli_close($con);
 }
 
 

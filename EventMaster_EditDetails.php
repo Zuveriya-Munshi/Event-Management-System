@@ -1,12 +1,12 @@
 <?php
 
-  $con=mysql_connect("localhost","root","");
+  $con=mysqli_connect("localhost","root","");
   if($con)
   {
-    mysql_select_db("project",$con);
+    mysqli_select_db($con,"project");
     $eventId=$_REQUEST['id'];
-    $result=mysql_query("SELECT * FROM eventmaster WHERE Eventid LIKE '%$eventId%'");
-    $row=mysql_fetch_array($result);
+    $result=mysqli_query($con,"SELECT * FROM eventmaster WHERE Eventid LIKE '%$eventId%'");
+    $row=mysqli_fetch_array($result);
     echo "<center>";
     echo "<table>";
     echo '</a> <link rel="stylesheet" type="text/css" href="css.css"> ';
@@ -36,5 +36,5 @@
     echo "</center>";
    
   }
- mysql_close($con);
+ mysqli_close($con);
 ?>

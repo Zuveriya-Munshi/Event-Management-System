@@ -1,14 +1,14 @@
 <?php
-$con=mysql_connect("localhost","root","");
+$con=mysqli_connect("localhost","root","");
 echo '</a> <link rel="stylesheet" type="text/css" href="css.css"> ';
 echo "<marquee><h1 class=impact style='color:white;' ><b><i>MUSICAL EVENT MANAGEMENT SYSTEM</i></b></h1></marquee>";
 echo '<h3 style="color:white;" >Payment Details are as follows</h3>';
 if($con)
 {
-    mysql_select_db("project");
+    mysqli_select_db($con,"project");
     $bid=$_REQUEST['id'];
-    $result=mysql_query("Select * from payment_details where Bookingid like '%$bid%'");
-    $row=mysql_fetch_array($result);
+    $result=mysqli_query($con,"Select * from payment_details where Bookingid like '%$bid%'");
+    $row=mysqli_fetch_array($result);
     echo "<center>";
     echo "<table >";
     echo "<form action=\"Payment_detailsEditSave.php\" method=\"POST\">";
@@ -40,5 +40,5 @@ if($con)
     echo "</table>";
     echo "</form>";
    } 
-   mysql_close($con);
+   mysqli_close($con);
 ?>

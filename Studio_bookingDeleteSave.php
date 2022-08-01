@@ -1,8 +1,8 @@
 <?php
 if(isset($_POST['DELETE'])){
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
     if($con){
-    mysql_select_db("project");
+    mysqli_select_db($con,"project");
         $SStuCode=$_POST['eStudioCode'];
         $Sdate=$_POST['eDate'];
         $SRectype=$_POST['eRecording_type'];
@@ -17,13 +17,13 @@ if(isset($_POST['DELETE'])){
         $SPay_Mo=$_POST['ePayment_Mode'];
         
         $delete="Delete from studio_booking where StudioCode like '%$SStuCode%'";
-        if(mysql_query($delete,$con)){
+        if(mysqli_query($con,$delete)){
             echo  "<script type='text/javascript'>
     alert('Record deleted Successfully!')
  window.location.href='Studio_bookingDelete.php'
  </script>";  
         }
-       mysql_close($con);    
+       mysqli_close($con);    
     }
   
 }

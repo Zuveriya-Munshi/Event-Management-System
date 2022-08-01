@@ -1,10 +1,10 @@
 <?php
 if(isset($_POST['save']))
 {
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
     if($con)
     {
-        mysql_select_db("project",$con);
+        mysqli_select_db($con,"project");
         
         $dfar_code=$_POST['eFaraskhanaCode'];
         $dDes_tion=$_POST['eDes'];
@@ -15,7 +15,7 @@ if(isset($_POST['save']))
         $dPrice=$_POST['eStaPrice'];
         $dAdvAMT =$_POST['eAdvamount'];
         $update="Update faraskhana Set Description='$dDes_tion',Vendorcode='$dVendor_code',Name='$dName',Mobile=$dMob_no,Email='$dEmailid',Price=$dPrice,Advanceamount=$dAdvAMT where Faraskhanacode like '%$dfar_code%'";
-        if(mysql_query($update,$con))
+        if(mysqli_query($con,$update))
         {
             echo  "<br><script type='text/javascript'>
     alert('Record Updated Successfully')
@@ -24,7 +24,7 @@ if(isset($_POST['save']))
         }
         
     }
-    mysql_close($con);
+    mysqli_close($con);
 }
 
 

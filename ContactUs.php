@@ -2,7 +2,7 @@
 
  if(isset($_POST['submit']))
  {
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
     if($con)
     {
         echo "Connection is successfull!!";
@@ -11,14 +11,14 @@
     {
         echo "Connection is Fail!";
     }
-    mysql_select_db("project");
+    mysqli_select_db($con,"project");
     $pYourName=$_POST['YourName'];
     $pEmailAddress=$_POST['EmailAddress'];
     $pMesg=$_POST['Mesg'];
     echo $pYourName,$pMesg;
     
     $sql="insert into contactus values('$pYourName','$pEmailAddress','$pMesg')"; 
-    mysql_query($sql,$con);
+    mysqli_query($con,$sql);
     if($sql)
     {
         echo  "<script type='text/javascript'>
@@ -35,7 +35,7 @@
        window.location.href='ContactUs.htm'
         </script>";  
  }
-    mysql_close($con);
+    mysqli_close($con);
  }
 
 ?>

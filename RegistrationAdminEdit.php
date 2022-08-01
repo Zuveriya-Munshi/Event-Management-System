@@ -27,12 +27,12 @@
       
 <?php
 $uname=$_POST['adminname'];
-$con=mysql_connect("localhost","root","");
+$con=mysqli_connect("localhost","root","");
 if($con)
  //echo "Connection Successfull";
- mysql_select_db("project");
+ mysqli_select_db($con,"project");
  $sql="Select * from registration where Username='$uname'";
- $result=mysql_query($sql,$con);
+ $result=mysqli_query($con,$sql);
  if($result=="")
  {
     echo  "<script type='text/javascript'>
@@ -43,7 +43,7 @@ if($con)
  }
  else
  {
-  while($row=mysql_fetch_array($result))
+  while($row=mysqli_fetch_array($result))
   {
     $RUtype=$row['Usertype'];
     $RUCat=$row['Usercat'];
@@ -75,7 +75,7 @@ if($con)
  
  
  
- mysql_close($con);
+ mysqli_close($con);
  }
  ?>
 </table>

@@ -1,12 +1,12 @@
 <?php
 if(isset($_POST['Submit']))
 {
-$con = mysql_connect("localhost","root","");
+$con = mysqli_connect("localhost","root","");
 if($con)
 {
     echo "connection successful"."</br>";
 }
-mysql_select_db("project");
+mysqli_select_db($con,"project");
 $Pat_code = $_POST['PatternCode'];
 $Des_tion = $_POST['Des'];
 $Vendor_code = $_POST['VenCode'];
@@ -17,7 +17,7 @@ $Price = $_POST['StaPrice'];
 $AdvanAMT = $_POST['Advamount'];
 
 $ins ="insert into lighting values( '$Pat_code','$Des_tion','$Vendor_code','$Name',$Mob_no,'$Email_Id',$Price,$AdvanAMT)";
-if(mysql_query($ins,$con))
+if(mysqli_query($con,$ins))
 {
     echo  "<script type='text/javascript'>
     alert('Record inserted Successfully!')
@@ -34,7 +34,7 @@ else
  </script>";  
 
 }
-mysql_close($con);
+mysqli_close($con);
 }
 
 ?>

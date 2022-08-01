@@ -1,11 +1,11 @@
 <?php
-  $con=mysql_connect("localhost","root","");
+  $con=mysqli_connect("localhost","root","");
   if($con)
   {
-    mysql_select_db("project",$con);
+    mysqli_select_db($con,"project");
     $TransId=$_REQUEST['id'];
-    $result=mysql_query("SELECT * FROM transportermaster WHERE Transporterid LIKE '%$TransId%'");
-    $row=mysql_fetch_array($result);
+    $result=mysqli_query($con,"SELECT * FROM transportermaster WHERE Transporterid LIKE '%$TransId%'");
+    $row=mysqli_fetch_array($result);
     echo '<link rel="stylesheet" type="text/css" href="css.css" />';
     echo "<center>";
     echo "<marquee><h1 class=impact style='color:white;' ><b><i>MUSICAL EVENT MANAGEMENT SYSTEM</i></b></h1></marquee>";
@@ -27,6 +27,6 @@
     echo "</form>";
     echo "</center>";
   }
-  mysql_close($con);
+  mysqli_close($con);
 
 ?>

@@ -11,15 +11,15 @@
      <h3 style='color:white;'>Details of Registration Record</h3>
      <table>
      <?php
-       $con=mysql_connect("localhost","root","");
+       $con=mysqli_connect("localhost","root","");
        if($con)
        {
         //echo "Connected Successfull";
        }
-    mysql_select_db("project",$con);
+    mysqli_select_db($con,"project");
      $RUname=$_GET['Username'];
-     $res=mysql_query("Select * from registration where Username like '%$RUname%'");
-     $row=mysql_fetch_array($res);
+     $res=mysqli_query($con,"Select * from registration where Username like '%$RUname%'");
+     $row=mysqli_fetch_array($res);
      {
         $RUtype=$row['Usertype'];
         $RUCat=$row['Usercat'];
@@ -102,7 +102,7 @@
    <?php
      
      
-    mysql_close($con);
+    mysqli_close($con);
     ?>
     </center>
  </body>

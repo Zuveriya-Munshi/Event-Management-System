@@ -1,6 +1,6 @@
 <?php
 if(isset($_POST['submit'])){
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
     if($con)
      {
         echo "Connection Successful";
@@ -9,14 +9,14 @@ if(isset($_POST['submit'])){
      {
         echo "Connection Failed";
      }
-     mysql_select_db("project");
+     mysqli_select_db($con,"project");
      $Username=$_POST['usernm'];
      $SecQuestion=$_POST['SecQues'];
      $SecAnswer=$_POST['SecAns'];
      //echo $Username,$SecAnswer;
      $sql="Select Username,Password,SecQuetion,SecAnswer from registration where Username='$Username'";
-     $query=mysql_query($sql,$con);
-     while($rs=mysql_fetch_assoc($query)){
+     $query=mysqli_query($con,$sql);
+     while($rs=mysqli_fetch_assoc($query)){
         
         $Usernm=$rs['Username'];
         $SecQ=$rs['SecQuetion'];
@@ -47,5 +47,5 @@ if(isset($_POST['submit'])){
      } 
         
 }
-mysql_close($con);
+mysqli_close($con);
 ?>

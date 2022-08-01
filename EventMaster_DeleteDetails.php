@@ -1,12 +1,12 @@
 <?php
 
-  $con=mysql_connect("localhost","root","");
+  $con=mysqli_connect("localhost","root","");
   if($con)
   {
-    mysql_select_db("project",$con);
+    mysqli_select_db($con,"project");
     $eventId=$_REQUEST['id'];
-    $result=mysql_query("SELECT * FROM eventmaster WHERE Eventid LIKE '%$eventId%'");
-    $row=mysql_fetch_array($result);
+    $result=mysqli_query($con,"SELECT * FROM eventmaster WHERE Eventid LIKE '%$eventId%'");
+    $row=mysqli_fetch_array($result);
     echo '</a> <link rel="stylesheet" type="text/css" href="css.css"> ';
     echo"<marquee><h1 class=impact style='color:white;' ><b><i>MUSICAL EVENT MANAGEMENT SYSTEM</i></b></h1></marquee>";
     echo "<center>";
@@ -34,5 +34,5 @@
     echo "</form>";
    echo "</center>";
   }
- mysql_close($con);
+ mysqli_close($con);
 ?>

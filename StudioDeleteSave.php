@@ -1,10 +1,10 @@
 <?php
 if(isset($_POST['delete']))
 {
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
     if($con)
     {
-        mysql_select_db("project",$con);
+        mysqli_select_db($con,"project");
         
         $SStudioCode=$_POST['DStudioCode'];
         $SStudioName=$_POST['DStudioName'];
@@ -16,7 +16,7 @@ if(isset($_POST['delete']))
         $SBookingPrice=$_POST['DBookingPrice'];
         $SMin_Advanceamount =$_POST['DMin_Advanceamount'];
         $delete="Delete from studio where StudioCode like '%$SStudioCode%'";
-        if(mysql_query($delete,$con))
+        if(mysqli_query($con,$delete))
         {
             echo  "<script type='text/javascript'>
     alert('Record Deleted Successfully!')
@@ -26,6 +26,6 @@ if(isset($_POST['delete']))
         }
         
     }
-    mysql_close($con);
+    mysqli_close($con);
 }
 ?>

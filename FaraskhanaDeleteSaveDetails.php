@@ -1,10 +1,10 @@
 <?php
 if(isset($_POST['delete']))
 {
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
     if($con)
     {
-        mysql_select_db("project",$con);
+        mysqli_select_db($con,"project");
         
         $dfar_code=$_POST['eFaraskhanaCode'];
         $dDes_tion=$_POST['eDes'];
@@ -15,7 +15,7 @@ if(isset($_POST['delete']))
         $dPrice=$_POST['eStaPrice'];
         $dAdvAMT =$_POST['eAdvamount'];
         $delete="Delete from faraskhana where Faraskhanacode like '%$dfar_code%'";
-        if(mysql_query($delete,$con))
+        if(mysqli_query($con,$delete))
         {
              echo  "<br><script type='text/javascript'>
     alert('Record Deleted Successfully')
@@ -25,7 +25,7 @@ if(isset($_POST['delete']))
         }
         
     }
-    mysql_close($con);
+    mysqli_close($con);
 }
 
 ?>

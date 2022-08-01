@@ -1,12 +1,12 @@
 <?php
 if(isset($_POST['Submit']))
 {
-$con = mysql_connect("localhost","root","");
+$con = mysqli_connect("localhost","root","");
 if($con)
 {
     echo "connection successful"."</br>";
 }
-mysql_select_db("project");
+mysqli_select_db($con,"project");
 $Studio_Code = $_POST['StudioCode'];
 $Studio_name = $_POST['StudioName'];
 $Studio_Address = $_POST['StudioAddress'];
@@ -18,7 +18,7 @@ $Booking_Price = $_POST['BookingPrice'];
 $Min_AdvanAMT = $_POST['Advamount'];
 echo $Studio_Code,$Owner_name,$Min_AdvanAMT;
 $ins ="insert into studio values('$Studio_Code','$Studio_name','$Studio_Address','$Owner_name','$Owner_Address',$Mob_no,'$Email_Id',$Booking_Price,$Min_AdvanAMT)";
-if(mysql_query($ins,$con))
+if(mysqli_query($con,$ins))
 {
       echo  "<script type='text/javascript'>
     alert('Record inserted Successfully!')
@@ -33,6 +33,6 @@ else
  </script>";
    
 }
-mysql_close($con);
+mysqli_close($con);
 }
 ?>

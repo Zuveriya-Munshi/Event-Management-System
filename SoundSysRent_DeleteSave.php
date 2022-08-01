@@ -1,10 +1,10 @@
 <?php
   if(isset($_POST['Delete']))
   {
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
     if($con)
     {
-        mysql_select_db("project",$con);
+        mysqli_select_db($con,"project");
         $sSoundSysCode=$_POST['soundSysCode'];
         $sDesc=$_POST['desc'];
         $sBookID=$_POST['bookID'];
@@ -22,7 +22,7 @@
         
         
         $update="Delete from soundsyrent where BookingID like '%$sBookID%'";
-      if(mysql_query($update,$con))
+      if(mysqli_query($con,$update))
       {
         echo  "<script type='text/javascript'>
     alert('Record Deleted Successfully!')
@@ -32,7 +32,7 @@
       }
     
     }
-    mysql_close($con);
+    mysqli_close($con);
   }
   
 

@@ -1,12 +1,12 @@
 <?php
   if(isset($_POST['submit']))
   {
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
     if($con)
     {
         echo "Connection is Successfull"."<br/>";
     }
-    mysql_select_db("project");
+    mysqli_select_db($con,"project");
     $pTRANSID=$_POST['TRANSID'];
     $pVNO=$_POST['VNO'];
     $pVTYPE=$_POST['VTYPE'];
@@ -17,7 +17,7 @@
     
     $ins="insert into transportermaster values('$pTRANSID','$pVNO','$pVTYPE','$pDNAME',$pContactNo,'$pMailId',$pCHARGE)";
     
-    if(mysql_query($ins,$con))
+    if(mysqli_query($con,$ins))
     {
         
             echo  "<script type='text/javascript'>
@@ -36,7 +36,7 @@ echo  "<script type='text/javascript'>
        
     }
     
-    mysql_close($con);
+    mysqli_close($con);
   }
 
 ?>

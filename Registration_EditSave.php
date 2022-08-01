@@ -1,10 +1,10 @@
 <?php
   if(isset($_POST['Submit']))
   {
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
     if($con)
     {
-        mysql_select_db("project",$con);
+        mysqli_select_db($con,"project");
         
         $sUTYPE=$_POST['dUTYPE'];
         $sUCAT=$_POST['dUCAT'];
@@ -18,7 +18,7 @@
         $sSECANS=$_POST['dSECANS'];
         
         $update="Update registration Set Usertype='$sUTYPE',Usercat='$sUCAT',Password='$sUPASS',Emailid='$sEMAIL',Fullname='$sFNAME',Addr='$sADDRESS',Mobileno=$sMOBNO,SecQuetion='$sSECQUE',SecAnswer='$sSECANS' where Username like '%$sUNAME%'";
-      if(mysql_query($update,$con))
+      if(mysqli_query($con,$update))
       {
         echo  "<script type='text/javascript'>
     alert('Record Updated Successfully!')
@@ -29,7 +29,7 @@
       }
     
     }
-    mysql_close($con);
+    mysqli_close($con);
   }
 
 ?>

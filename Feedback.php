@@ -3,17 +3,17 @@
 
 if(isset($_POST['Submit']))
 {
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
  if($con)
  {
     
   echo "Connection successful...!!!"."<br/>";
-   mysql_select_db("project");
+   mysqli_select_db($con,"project");
    $pUname=$_POST['Uname'];
    echo $pUname;
    $sql1 = "select Emailid,Fullname,Mobileno from registration where Username='$pUname'";
-    $query1 = mysql_query($sql1,$con);
-while($rs = mysql_fetch_assoc($query1))
+    $query1 = mysqli_query($con,$sql1);
+while($rs = mysqli_fetch_assoc($query1))
 {
         
 $REamil=$rs['Emailid'];
@@ -29,18 +29,18 @@ echo  $REamil,$RFullname,$RMobileno;
 <?php
 if(isset($_POST['Submit']))
 {
-     $con=mysql_connect("localhost","root","");
+     $con=mysqli_connect("localhost","root","");
      if($con)
      {
         echo "Connection Successful.."."<br/>";
      }
-    mysql_select_db("project");
+    mysqli_select_db($con,"project");
     
     $Rate=$_POST['Star'];
     $Comments=$_POST['comment'];
 
      $sql="insert into feedback values('$pUname','$RFullname',$RMobileno,'$REamil','$Rate','$Comments')";
-    mysql_query($sql,$con);
+    mysqli_query($con,$sql);
      if($sql)
      {
         echo  "<script type='text/javascript'>
@@ -58,7 +58,7 @@ if(isset($_POST['Submit']))
  </script>";  
 
      }
-    mysql_close($con);
+    mysqli_close($con);
    
     
 }

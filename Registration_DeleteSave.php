@@ -1,10 +1,10 @@
 <?php
   if(isset($_POST['delete']))
   {
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
     if($con)
     {
-        mysql_select_db("project",$con);
+        mysqli_select_db($con,"project");
         
         $sUTYPE=$_POST['dUTYPE'];
         $sUCAT=$_POST['dUCAT'];
@@ -18,7 +18,7 @@
         $sSECANS=$_POST['dSECANS'];
         
         $update="delete from registration where Username like '%$sUNAME%'";
-      if(mysql_query($update,$con))
+      if(mysqli_query($con,$update))
       {
         echo  "<script type='text/javascript'>
     alert('Record Deleted Successfully!')
@@ -29,7 +29,7 @@
       }
     
     }
-    mysql_close($con);
+    mysqli_close($con);
   }
  
 ?>

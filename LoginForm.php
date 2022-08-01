@@ -2,7 +2,7 @@
 
   if(isset($_POST['submit']))
   {
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
     if($con)
     {
         echo "Connection is Successful!"."</br>";
@@ -11,16 +11,16 @@
     {
         echo "Connection is Fail"."</br>";
     }
-    mysql_select_db("project");
+    mysqli_select_db($con,"project");
     $pUname=$_POST['Uname'];
     $pPwd=$_POST['Pwd'];
     echo "</br>";
     
     $sql = "Select Usercat,Username,Password from registration where Username='$pUname'"; 
-    $query=mysql_query($sql,$con);
+    $query=mysqli_query($con,$sql);
     echo "Query Successful!"."<br>";
     
-    while($rs = mysql_fetch_assoc($query))
+    while($rs = mysqli_fetch_assoc($query))
     {
         
         $rUCat=$rs['Usercat'];
@@ -31,7 +31,7 @@
     if(($rUname==$pUname && $rPwd==$pPwd) && $rUCat=="USER" )
       {
         $sql2 = "insert into loginform values ('$pUname','$pPwd')";
-        if(mysql_query($sql2,$con))
+        if(mysqli_query($con,$sql2))
         {
             echo  "<script type='text/javascript'>
     alert('Welcom $rUname to our site')
@@ -51,6 +51,6 @@
    
   }
   
- mysql_close($con);
+ mysqli_close($con);
 
 ?>

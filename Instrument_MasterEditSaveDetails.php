@@ -2,10 +2,10 @@
 
 if(isset ($_POST['save']))
 {
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
     if($con)
     {
-        mysql_select_db("project",$con);
+        mysqli_select_db($con,"project");
         
         $did=$_POST['eInstrumentID'];
         $ddescription=$_POST['eInstrumentDESC'];
@@ -17,7 +17,7 @@ if(isset ($_POST['save']))
         $dstatus=$_POST['eSTATUS'];
         $dwg=$_POST['eWG'];
         $update="Update instrunmentmaster Set Description='$ddescription',Company='$dcompany',Purchasedate='$dpurchasedate',Quantity=$dquality,Price=$dprice,Advanceamount=$dasvanceamt,Status='$dstatus',WG='$dwg' where Id like '%$did%'";
-        if(mysql_query($update,$con))
+        if(mysqli_query($con,$update))
         {
             echo  "<script type='text/javascript'>
     alert('Record Updated Successfully')
@@ -27,7 +27,7 @@ if(isset ($_POST['save']))
         }
         
     }
-    mysql_close($con);
+    mysqli_close($con);
 }
 
 

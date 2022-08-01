@@ -1,14 +1,14 @@
 <?php
 
-  $con=mysql_connect("localhost","root","");
+  $con=mysqli_connect("localhost","root","");
   if($con)
   {
-    mysql_select_db("project",$con);
+    mysqli_select_db($con,"project");
     $FaraskhanaCode=$_REQUEST['id'];
     echo '<link rel="stylesheet" type="text/css" href="css.css" />';
-    $result=mysql_query("SELECT * FROM faraskhanarent WHERE BookingID LIKE '%$FaraskhanaCode%'");
+    $result=mysqli_query($con,"SELECT * FROM faraskhanarent WHERE BookingID LIKE '%$FaraskhanaCode%'");
     
-    $row=mysql_fetch_array($result);
+    $row=mysqli_fetch_array($result);
     echo "<center>";
 echo "<marquee><h1 class=impact style='color:white;' ><b><i>MUSICAL EVENT MANAGEMENT SYSTEM</i></b></h1></marquee>";
 echo "<table  >";
@@ -37,5 +37,5 @@ echo "<table  >";
     echo "</form>";
    echo "</center>"; 
   }
- mysql_close($con);
+ mysqli_close($con);
 ?>

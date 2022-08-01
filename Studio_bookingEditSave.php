@@ -1,8 +1,8 @@
 <?php
 if(isset($_POST['SAVE'])){
-    $con=mysql_connect("localhost","root","");
+    $con=mysqli_connect("localhost","root","");
     if($con){
-        mysql_select_db("project",$con);
+        mysqli_select_db($con,"project");
         $StuCode=$_POST['eStudioCode'];
         $date=$_POST['eDate'];
         $Rectype=$_POST['eRecording_type'];
@@ -17,7 +17,7 @@ if(isset($_POST['SAVE'])){
         $Pay_Mo=$_POST['ePayment_Mode'];
         
         $update="Update Studio_booking Set Date='$date',Recording_type='$Rectype',ClientName='$CName',ClientAddress='$CAdd',ClientMobile=$CMob,ClientEmail='$CEmail',BookingDateFrom='$BookingDF',BookingDateTo='$BookingDT',TotalCharges=$TotalCharges,Advance_Amount=$AdvanceAmt,Payment_Mode='$Pay_Mo' where StudioCode like '%$StuCode%'";
-        if(mysql_query($update,$con)){
+        if(mysqli_query($con,$update)){
             
              echo  "<script type='text/javascript'>
     alert('Record Updated Successfully!')
@@ -26,7 +26,7 @@ if(isset($_POST['SAVE'])){
            
             
         } 
-        mysql_close($con);
+        mysqli_close($con);
     }
  
     

@@ -1,13 +1,13 @@
 <?php
 if(isset($_POST['Submit']))
 {
-$con = mysql_connect("localhost","root","");
+$con = mysqli_connect("localhost","root","");
 
 if($con)
 {
     echo "connection successful"."</br>";
 }
-mysql_select_db("project");
+mysqli_select_db($con,"project");
 $instrumentid = $_POST['InstrumentID'];
 $instruDESC = $_POST['InstrumentDESC'];
 $Company_name = $_POST['Company'];
@@ -18,7 +18,7 @@ $AdvanAMT = $_POST['AdvanceAMT'];
 $Status = $_POST['STATUS'];
 $warranty_guarantee = $_POST['WG'];
 $ins ="insert into instrunmentmaster values( '$instrumentid','$instruDESC','$Company_name','$PDate',$Quantity,$Price,$AdvanAMT,'$Status','$warranty_guarantee')";
-if(mysql_query($ins,$con))
+if(mysqli_query($con,$ins))
 {
     echo  "<script type='text/javascript'>
     alert('Record inserted Successfully!')
@@ -35,6 +35,6 @@ echo  "<script type='text/javascript'>
  </script>"; 
    
 }
-mysql_close($con);
+mysqli_close($con);
 }
 ?>

@@ -1,12 +1,12 @@
 <?php
 if(isset($_POST['submit']))
 {
-$con = mysql_connect("localhost","root","");
+$con = mysqli_connect("localhost","root","");
 if($con)
 {
     echo "connection successful"."</br>";
 }
-mysql_select_db("project");
+mysqli_select_db($con,"project");
 $staffid = $_POST['STAFFID'];
 $staffname = $_POST['STAFFNM'];
 $gender = $_POST['Gender'];
@@ -16,7 +16,7 @@ $stafftype = $_POST['STYPE'];
 $staffcontact = $_POST['ConNum'];
 $staffemail = $_POST['MAILID'];
 $ins ="insert into staffmaster values( $staffid ,'$staffname','$gender','$skill','$staffaddress','$stafftype',$staffcontact,'$staffemail')";
-if(mysql_query($ins,$con))
+if(mysqli_query($con,$ins))
 {
     echo  "<script type='text/javascript'>
     alert('Record inserted Successfully!')
@@ -32,6 +32,6 @@ else
  </script>";
    
 }
-mysql_close($con);
+mysqli_close($con);
 }
 ?>

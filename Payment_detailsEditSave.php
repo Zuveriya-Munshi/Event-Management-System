@@ -1,11 +1,11 @@
 <?php
 if(isset($_POST['submit']))
 {
- $con=mysql_connect("localhost","root","");
+ $con=mysqli_connect("localhost","root","");
  echo '</a> <link rel="stylesheet" type="text/css" href="css.css"> ';
  if($con)
  {
-    mysql_select_db("project");
+    mysqli_select_db($con,"project");
     $sBID=$_POST['eBID'];
     $sIC=$_POST['eIC'];
     $sIAA=$_POST['eIAA'];
@@ -35,7 +35,7 @@ if(isset($_POST['submit']))
      
      
     $update="Update payment_details Set ICharges=$sIC,IAdvamt=$sIAA,IAdvamtDate='$sIAD',IFinalPay='$sIFA1',IFinalPayDate='$sIFD',FPrice=$sFC,FAdvamt=$sFAA,FAdvamtDate='$sFAD',FFinalPay=$sFFA1,FFinalPayDate='$sFFD',PPrice=$sLC,PAdvamt=$sLAA,PAdvamtDate='$sLAD',PFinalPay=$sLFA1,PFinalPayDate='$sLFD',SPrice=$sSC,SAdvamt=$sSAA,SAdvamtDate='$sSAD',SFinalPay='$sSFA1',SFinalPayDate='$sSFD' where Bookingid like '%$sBID%'";
-    if(mysql_query($update,$con))
+    if(mysqli_query($con,$update))
     {
         echo  "<script type='text/javascript'>
     alert('Record Updated Successfully')
@@ -45,7 +45,7 @@ if(isset($_POST['submit']))
     }
  
   }
-  mysql_close($con);
+  mysqli_close($con);
 }
 
 ?>
